@@ -39,8 +39,7 @@
             "path": "node_modules/aurelia-cli/lib/resources/scripts/configure-bluebird.js",
             "env": "dev"
           },
-          "node_modules/requirejs/require.js",
-          "node_modules/interact.js/dist/interact.min.js"
+          "node_modules/requirejs/require.js"
         ],
         "dependencies": [
           "aurelia-binding",
@@ -80,17 +79,7 @@
             "main": "aurelia-testing",
             "env": "dev"
           },
-          "text",
-          {
-            "name": "interact",
-            "path": "../node_modules/aurelia-interactjs/dist/amd",
-            "main": "interact"
-          },
-          {
-            "name": "aurelia-interactjs",
-            "path": "../node_modules/aurelia-interactjs/dist/amd",
-            "main": "index"
-          }
+          "text"
         ]
       }
     ],
