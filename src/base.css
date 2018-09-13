@@ -1,0 +1,42 @@
+body {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+}
+
+#drag-1,
+#drag-2 {
+    width: 150px;
+    height: 150px;
+    -webkit-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+}
+
+#drag-me::before {
+    content: "#" attr(id);
+    font-weight: bold;
+}
+
+.up {
+    position: absolute;
+    left: 60px;
+    top: -26px;
+}
+
+.left {
+    position: absolute;
+    left: -35px;
+    top: 61px;
+}
+
+.right {
+    position: absolute;
+    right: -32px;
+    top: 61px;
+}
+
+.down {
+    position: absolute;
+    left: 60px;
+    top: 155px;
+}
