@@ -1,5 +1,14 @@
 export class App {
-  public chars = 5;
+  public chars = [
+    {
+      name: "Sander",
+      image: "char1.svg"
+    },
+    {
+      name: "Roy",
+      image: "char2.svg"
+    }
+  ];
   constructor() {
     // this is used later in the resizing and gesture demos
     (<any>window).dragMoveListener = this.dragMoveListener;
@@ -51,6 +60,7 @@ export class App {
   }
 
   public dragMoveListener(event) {
+    console.log(event.target);
     var target = event.target,
       // keep the dragged position in the data-x/data-y attributes
       x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
