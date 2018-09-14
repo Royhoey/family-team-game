@@ -2,6 +2,7 @@ import { Session } from './models/session';
 import { Data } from './data';
 import { Router } from 'aurelia-router';
 import { inject, autoinject } from 'aurelia-framework';
+import { WebApi } from './web-api';
 
 @autoinject
 export class CreateSession {
@@ -41,7 +42,8 @@ export class CreateSession {
     }
   ];
 
-  constructor(private data: Data, private router: Router) {
+  constructor(private data: Data, private router: Router, private webApi: WebApi) {
+    this.webApi.getAsync<Session>('/session/141209');
   }
 
   public setSelectedImage(imagePath: string) {
