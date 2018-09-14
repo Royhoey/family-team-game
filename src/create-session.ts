@@ -62,8 +62,7 @@ export class CreateSession {
 
   public startSession() {
     this.sessionService.createSession(this.session.teamMembers).then((session) => {
-      this.data.session = session;
-      this.router.navigateToRoute('team-positions');
+      this.router.navigateToRoute('live-session', {sessionId: session.sessionId});
     });    
   }
 
