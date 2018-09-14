@@ -1,5 +1,9 @@
 import { Session } from './models/session';
+import { Data } from './data';
+import { Router } from 'aurelia-router';
+import { inject, autoinject } from 'aurelia-framework';
 
+@autoinject
 export class CreateSession {
   public session: Session;
   public newTeamMemberName: string;
@@ -36,14 +40,21 @@ export class CreateSession {
     }
   ];
 
+  constructor(private data: Data, private router: Router) {
+  }
+
   public created() {
     this.session = new Session();
-    console.log(this.session);
   }
 
   public addTeamMember(name: string) {
     this.session.addTeamMember(name);
     this.newTeamMemberName = '';
+  }
+
+  public startSession() {
+    this.data.session = this.session;
+    this.router.navigateToRoute('team-positions');
   }
 
 } 
