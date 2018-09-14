@@ -4,7 +4,7 @@
     <h1>Pick a name</h1>
     <input type="text" class="teamname" value.bind="newTeamMemberName"></input>
     <div>
-      <h1>Choose your character</h1>
+      <h1>Choose a character</h1>
     </div>
     <div>
       <div repeat.for="image of images" class="character-selection">
@@ -12,7 +12,8 @@
         />
       </div>
     </div>
-    <button click.delegate="addTeamMember(newTeamMemberName, selectedImage)">Add as a team member</button>
+    <button class="button button--add" disabled.bind="newTeamMemberName == '' || selectedImage == ''" click.delegate="addTeamMember(newTeamMemberName, selectedImage)">Add
+      as a team member</button>
   </div>
   <div class="selectedteammembers">
     <h1 if.bind="session.teamMembers.length > 0">Current Teammembers</h1>
@@ -23,5 +24,8 @@
       <li><img class="selectedteammember--image" src="${teamMember.image}"></li>
     </ul>
   </div>
-  <button click.delegate="startSession()">Start session</button>
+  <div class="send">
+    <img height="280px" src="/src/images/send.gif" />
+    <button class="button button--start" click.delegate="startSession()">Start session</button>
+  </div>
 </template>
