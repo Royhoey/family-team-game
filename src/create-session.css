@@ -1,0 +1,17 @@
+.character-selection {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    display: inline-block;
+}
+
+.character {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+}
+
+.character:hover {
+    height: 150px;
+    width: 150px;
+}

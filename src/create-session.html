@@ -1,11 +1,17 @@
 <template>
-    
-        <h1>Create a session</h1>
-        <ul repeat.for="teamMember of session.teamMembers">
-            <li>${teamMember.name}</li>
-        </ul>
-        <input type="text" value.bind="newTeamMemberName"></input>
-        <button click.delegate="addTeamMember(newTeamMemberName)">Add team member</button>
-    
-  </template>
-  
+  <require from="./create-session.css"></require>
+  <h1>Pick a name</h1>
+  <ul repeat.for="teamMember of session.teamMembers">
+    <li>${teamMember.name}</li>
+  </ul>
+  <input type="text" value.bind="newTeamMemberName"></input>
+  <div>
+    <h1>Choose your character</h1>
+  </div>
+  <div>
+    <div repeat.for="image of images" class="character-selection">
+      <img class="character" src.bind="image.path" />
+    </div>
+  </div>
+  <button click.delegate="addTeamMember(newTeamMemberName)">Add as a team member</button>
+</template>

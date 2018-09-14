@@ -7,6 +7,8 @@
     width: 150px;
     height: 150px;
     transform: translate(0px, 0px);
+    -ms-touch-action: none;
+    touch-action: none;
 }
 
 input[type='range'] {
