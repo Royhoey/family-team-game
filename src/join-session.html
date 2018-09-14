@@ -1,0 +1,9 @@
+<template>
+    <div class="joinSession-container">
+        <h1>Join session</h1>
+        <h3>Session number (try: 094430)</h3>
+        <input type="text" value.bind="sessionId"></input>
+        <h3>Your name</h3>
+        <input type="text" value.bind="userName"></input>
+        <button click.delegate="joinSession(sessionId, userName)">Join</button>
+</template>

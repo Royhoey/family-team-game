@@ -2,7 +2,7 @@ import { Session } from './models/session';
 import { Data } from './data';
 import { Router } from 'aurelia-router';
 import { inject, autoinject } from 'aurelia-framework';
-import { WebApi } from './web-api';
+import { SessionService } from './services/sessionService';
 
 @autoinject
 export class CreateSession {
@@ -42,8 +42,8 @@ export class CreateSession {
     }
   ];
 
-  constructor(private data: Data, private router: Router, private webApi: WebApi) {
-    this.webApi.getAsync<Session>('/session/141209');
+  constructor(private data: Data, private router: Router, private sessionService: SessionService) {
+    
   }
 
   public setSelectedImage(imagePath: string) {
@@ -61,8 +61,10 @@ export class CreateSession {
   }
 
   public startSession() {
-    this.data.session = this.session;
-    this.router.navigateToRoute('team-positions');
+    this.sessionService.createSession(this.session.teamMembers).then((session) => {
+      this.data.session = session;
+      this.router.navigateToRoute('team-positions');
+    });    
   }
 
 } 

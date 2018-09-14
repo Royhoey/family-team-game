@@ -1,18 +1,26 @@
 import { Session } from './models/session';
 import { Data } from './data';
 import { autoinject } from 'aurelia-framework';
+import { Router } from 'aurelia-router';
+import { SessionService } from './services/sessionService';
 
 @autoinject
 export class TeamPositions {
-  
+
   public session: Session;
 
-  constructor(private data: Data) {
-    this.session = this.data.session;
+  constructor(private data: Data, private router: Router, private sessionService: SessionService) {
     this.initDraggable();
   }
 
-  public initDraggable(){
+  public created() {
+    let sessionId = this.router.currentInstruction.queryParams.sessionId;
+    this.sessionService.getSession(sessionId).then((session) => {
+      this.session = session;
+    });
+  }
+
+  public initDraggable() {
     // this is used later in the resizing and gesture demos
     (<any>window).dragMoveListener = this.dragMoveListener;
     interact('.draggable')
