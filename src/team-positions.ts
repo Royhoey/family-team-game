@@ -1,3 +1,7 @@
+import { Data } from './data';
+import { autoinject } from 'aurelia-framework';
+
+@autoinject
 export class TeamPositions {
   public chars = [
     {
@@ -21,7 +25,8 @@ export class TeamPositions {
       image: "person.svg"
     }
   ];
-  constructor() {
+  constructor(private data: Data) {
+    console.log(data);
     console.log('hier');
     // this is used later in the resizing and gesture demos
     (<any>window).dragMoveListener = this.dragMoveListener;

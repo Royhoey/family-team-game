@@ -1,5 +1,9 @@
 import { Session } from './models/session';
+import { Data } from './data';
+import { Router } from 'aurelia-router';
+import { inject, autoinject } from 'aurelia-framework';
 
+@autoinject
 export class CreateSession {
   public session: Session;
   public newTeamMemberName: string;
@@ -37,6 +41,9 @@ export class CreateSession {
     }
   ];
 
+  constructor(private data: Data, private router: Router) {
+  }
+
   public setSelectedImage(imagePath: string) {
     this.selectedImage = imagePath;
   }
@@ -49,6 +56,11 @@ export class CreateSession {
     this.session.addTeamMember(name, image);
     this.newTeamMemberName = '';
     this.selectedImage = '';
+  }
+
+  public startSession() {
+    this.data.session = this.session;
+    this.router.navigateToRoute('team-positions');
   }
 
 } 
