@@ -1,17 +1,26 @@
 <template>
   <require from="./create-session.css"></require>
-  <h1>Pick a name</h1>
-  <ul repeat.for="teamMember of session.teamMembers">
-    <li>${teamMember.name}</li>
-  </ul>
-  <input type="text" value.bind="newTeamMemberName"></input>
-  <div>
-    <h1>Choose your character</h1>
-  </div>
-  <div>
-    <div repeat.for="image of images" class="character-selection">
-      <img class="character" src.bind="image.path" />
+  <div class="teamCreation-container">
+    <h1>Pick a name</h1>
+    <input type="text" class="teamname" value.bind="newTeamMemberName"></input>
+    <div>
+      <h1>Choose your character</h1>
     </div>
+    <div>
+      <div repeat.for="image of images" class="character-selection">
+        <img class="character ${image.path === selectedImage ? 'selected' : ''}" src.bind="image.path" click.delegate="setSelectedImage(image.path)"
+        />
+      </div>
+    </div>
+    <button click.delegate="addTeamMember(newTeamMemberName, selectedImage)">Add as a team member</button>
   </div>
-  <button click.delegate="addTeamMember(newTeamMemberName)">Add as a team member</button>
+  <div class="selectedteammembers">
+    <h1 if.bind="session.teamMembers.length > 0">Current Teammembers</h1>
+    <ul repeat.for="teamMember of session.teamMembers" class="selectedteammember--list">
+      <li>
+        <h2>${teamMember.name}</h2>
+      </li>
+      <li><img class="selectedteammember--image" src="${teamMember.image}"></li>
+    </ul>
+  </div>
 </template>

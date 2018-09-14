@@ -3,6 +3,7 @@ import { Session } from './models/session';
 export class CreateSession {
   public session: Session;
   public newTeamMemberName: string;
+  public selectedImage: string = "";
   public images = [
     {
       path: "src/images/Blond.svg"
@@ -36,14 +37,18 @@ export class CreateSession {
     }
   ];
 
-  public created() {
-    this.session = new Session();
-    console.log(this.session);
+  public setSelectedImage(imagePath: string) {
+    this.selectedImage = imagePath;
   }
 
-  public addTeamMember(name: string) {
-    this.session.addTeamMember(name);
+  public created() {
+    this.session = new Session();
+  }
+
+  public addTeamMember(name: string, image: string) {
+    this.session.addTeamMember(name, image);
     this.newTeamMemberName = '';
+    this.selectedImage = '';
   }
 
 } 

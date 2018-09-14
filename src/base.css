@@ -5,3 +5,7 @@ body {
     background: url('src/floor.jpg') no-repeat;
     background-size: 100%;
 }
+
+.container {
+    margin: 10px;
+}
