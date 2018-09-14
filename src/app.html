@@ -1,9 +1,14 @@
 <template>
   <require from="./base.css"></require>
-  <require from="./team-positions"></require>
-  <require from="./create-session"></require>
+  <nav>
+    <h3>Navigation</h3>
+    <ul>
+       <li repeat.for = "row of router.navigation">
+          <a href.bind = "row.href">${row.title}</a>
+       </li>
+    </ul>
+ </nav>
   <main role="main">
     <router-view swap-order="with"></router-view>
-    <!-- <create-session></create-session> -->
   </main>
 </template>
