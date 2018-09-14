@@ -3,8 +3,8 @@ export class TeamMember {
   public image: string;
   public id: number;
 
-  constructor(name: string, image: string) {
-    this.id = Math.random();
+  constructor(id: number, name: string, image: string) {
+    this.id = id;
     this.name = name;
     this.image = image;
   }
