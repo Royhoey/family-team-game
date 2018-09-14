@@ -3,21 +3,46 @@ import { Data } from './data';
 import { autoinject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { SessionService } from './services/sessionService';
+import { TeamMemberPosition } from './models/teamMemberPosition';
+import { UserSession } from './models/userSession';
 
 @autoinject
 export class TeamPositions {
 
   public session: Session;
+  public userSession : UserSession = null;
+  public userName: string;
 
   constructor(private data: Data, private router: Router, private sessionService: SessionService) {
     this.initDraggable();
   }
 
   public created() {
+    this.userName = this.router.currentInstruction.queryParams.userName;
+    
     let sessionId = this.router.currentInstruction.queryParams.sessionId;
+    let userName = this.router.currentInstruction.queryParams.userName;
+
     this.sessionService.getSession(sessionId).then((session) => {
       this.session = session;
     });
+
+    if(userName != null){
+      this.sessionService.getUserSession(sessionId, userName).then((userSession) => {
+        this.userSession = userSession;
+      });
+    }
+  }
+
+  public finishSession() {
+    console.log(this.session);
+    let teamMemberPositions = [];
+    for (let teamMember of this.session.teamMembers) {
+      let element = document.querySelector("#teamMember-" + teamMember.id).getBoundingClientRect();
+      teamMemberPositions.push(new TeamMemberPosition(teamMember.id, element.x, element.y, 0));
+    }
+    console.log(teamMemberPositions);
+    this.sessionService.finishSession(this.session.sessionId, this.userName, teamMemberPositions);
   }
 
   public initDraggable() {

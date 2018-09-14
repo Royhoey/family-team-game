@@ -9,6 +9,6 @@ export class JoinSession {
     }
 
     public joinSession(sessionId: string, userName: string) {
-        this.router.navigateToRoute('team-positions', { sessionId: sessionId });
+        this.router.navigateToRoute('team-positions', { sessionId, userName });
     }
 }
