@@ -24,9 +24,6 @@ export class CreateSession {
       path: "src/images/Johannes.svg"
     },
     {
-      path: "src/images/Kaal.svg"
-    },
-    {
       path: "src/images/KnotBlond.svg"
     },
     {
@@ -40,11 +37,14 @@ export class CreateSession {
     },
     {
       path: "src/images/Sander.svg"
+    },
+    {
+      path: "src/images/Creepy.svg"
     }
   ];
 
   constructor(private data: Data, private router: Router, private sessionService: SessionService) {
-    
+
   }
 
   public setSelectedImage(imagePath: string) {
@@ -63,8 +63,8 @@ export class CreateSession {
 
   public startSession() {
     this.sessionService.createSession(this.session.teamMembers).then((session) => {
-      this.router.navigateToRoute('live-session', {sessionId: session.sessionId});
-    });    
+      this.router.navigateToRoute('live-session', { sessionId: session.sessionId });
+    });
   }
 
   public toggleSendGif(show: boolean) {

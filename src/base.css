@@ -5,6 +5,7 @@ body {
     background: url(src/images/floor.jpg);
     background-size: 35%;
     font-family: "Poppins SemiBold", Times, serif;
+    overflow: hidden;
 }
 
 .container {

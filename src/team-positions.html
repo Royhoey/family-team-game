@@ -1,6 +1,11 @@
 <template>
   <require from="./team-positions.css"></require>
-  <div class="full-screen" id="capture">
+  <div class="full-screen">
+    <img class="couch" width="500" src="src/images/furniture/bank.svg" />
+    <img class="plant2" width="200" src="src/images/furniture/Plant2.svg" />
+    <img class="plant" width="200" src="src/images/furniture/Plant.svg" />
+    <img class="kitchen" width="700" src="src/images/furniture/Keukenblok.svg" />
+    <img class="cat" width="100" src="src/images/furniture/kat.svg" />
     <template repeat.for="teamMember of session.teamMembers">
       <div class="draggable" click.delegate="focusInput(teamMember.id)" id="teamMember-${teamMember.id}">
         <span class="teammember-name">${teamMember.name}</span>

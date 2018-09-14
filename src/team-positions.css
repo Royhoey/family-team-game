@@ -27,3 +27,32 @@ input[type='range'] {
     color: #ffffff;
     left: 12px;
 }
+
+.plant {
+    position: absolute;
+    left: 782px;
+}
+
+.plant2 {
+    position: absolute;
+    right: 50px;
+}
+
+.couch {
+    position: absolute;
+    left: 250px;
+}
+
+.cat {
+    position: absolute;
+    bottom: 10px;
+    left: 50px;
+    transform: rotate(20deg);
+}
+
+.kitchen {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: rotate(180deg) scaleX(-1);
+}
