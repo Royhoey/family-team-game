@@ -1,12 +1,13 @@
 import { Session } from './models/session';
 import { Data } from './data';
 import { Router } from 'aurelia-router';
-import { inject, autoinject } from 'aurelia-framework';
+import { autoinject } from 'aurelia-framework';
 
 @autoinject
 export class CreateSession {
   public session: Session;
   public newTeamMemberName: string;
+  public SendGif: HTMLElement;
   public selectedImage: string = "";
   public images = [
     {
@@ -63,4 +64,7 @@ export class CreateSession {
     this.router.navigateToRoute('team-positions');
   }
 
+  public toggleSendGif(show: boolean) {
+    this.SendGif.style.opacity = show ? "1" : "0";
+  }
 } 

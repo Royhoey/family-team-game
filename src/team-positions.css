@@ -4,8 +4,8 @@
 }
 
 .draggable {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     transform: translate(0px, 0px);
     -ms-touch-action: none;
     touch-action: none;
@@ -17,4 +17,13 @@ input[type='range'] {
 
 .image {
     transform: rotate(180deg);
+    width: 180px;
+}
+
+.teammember-name {
+    position: absolute;
+    top: 8px;
+    font-size: 25px;
+    color: #ffffff;
+    left: 14px;
 }

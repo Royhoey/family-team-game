@@ -3,7 +3,8 @@
   <div class="full-screen">
     <template repeat.for="teamMember of session.teamMembers">
       <div class="draggable" click.delegate="focusInput(teamMember.id)">
-        ${teamMember.name}
+        <span class="teammember-name">${teamMember.name}</span>
+        <img src="src/images/nametag.svg" />
         <img src.bind="teamMember.image" class="image" style="transform: rotate(${test*3.6+'deg'})" />
       </div>
       <input type="range" id="teamMember-${teamMember.id}" value.bind="test" step="5">

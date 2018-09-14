@@ -2,7 +2,7 @@
   <require from="./create-session.css"></require>
   <div class="teamCreation-container">
     <h1>Pick a name</h1>
-    <input type="text" class="teamname" value.bind="newTeamMemberName"></input>
+    <input type="text" maxlength="10" class="teamname" value.bind="newTeamMemberName"></input>
     <div>
       <h1>Choose a character</h1>
     </div>
@@ -25,7 +25,8 @@
     </ul>
   </div>
   <div class="send">
-    <img height="280px" src="/src/images/send.gif" />
-    <button class="button button--start" click.delegate="startSession()">Start session</button>
+    <img class="send-gif" ref="SendGif" height="280px" src="/src/images/send.gif" />
+    <button class="button button--start" mouseover.delegate="toggleSendGif(true)" mouseout.delegate="toggleSendGif(false)" click.delegate="startSession()">Start
+      session</button>
   </div>
 </template>

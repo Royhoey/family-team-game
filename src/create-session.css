@@ -97,3 +97,8 @@
 .button--start:hover {
     background-color: #2879af;
 }
+
+.send-gif {
+    opacity: 0;
+    transition: opacity .5s;
+}
