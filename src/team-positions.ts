@@ -10,39 +10,71 @@ import { UserSession } from './models/userSession';
 export class TeamPositions {
 
   public session: Session;
-  public userSession : UserSession = null;
+  public userSession: UserSession = null;
   public userName: string;
+  public readOnly: boolean = false;
 
   constructor(private data: Data, private router: Router, private sessionService: SessionService) {
-    this.initDraggable();
   }
 
   public created() {
     this.userName = this.router.currentInstruction.queryParams.userName;
-    
+
     let sessionId = this.router.currentInstruction.queryParams.sessionId;
     let userName = this.router.currentInstruction.queryParams.userName;
+    let readOnly = this.router.currentInstruction.queryParams.readOnly;
 
     this.sessionService.getSession(sessionId).then((session) => {
       this.session = session;
-    });
 
-    if(userName != null){
-      this.sessionService.getUserSession(sessionId, userName).then((userSession) => {
-        this.userSession = userSession;
-      });
-    }
+      if (userName != null) {
+        this.userName = userName;
+      }
+
+      if (readOnly != null) {
+        this.readOnly = readOnly;
+      }
+      console.log(this.readOnly);
+
+      if (!this.readOnly) {
+        this.initDraggable();
+      } else {
+        this.disableDragging();
+        this.setTeamMemberPositions();
+      }
+    });
+  }
+
+  public backToSession(){
+    this.router.navigateToRoute('live-session', {sessionId: this.session.sessionId});
+  }
+
+  public setTeamMemberPositions() {
+    this.sessionService.getUserSession(this.session.sessionId, this.userName).then((userSession) => {
+      this.userSession = userSession;
+      
+      for (let teamMemberPosition of this.userSession.teamMemberPositions) {
+        let element = document.getElementById("teamMember-" + teamMemberPosition.teamMemberId);
+        console.log(element);
+        element.style.position = "absolute";
+        element.style.top = teamMemberPosition.yCoordinate + "px";
+        element.style.left = teamMemberPosition.xCoordinate + "px";
+      }
+    });
   }
 
   public finishSession() {
-    console.log(this.session);
     let teamMemberPositions = [];
     for (let teamMember of this.session.teamMembers) {
       let element = document.querySelector("#teamMember-" + teamMember.id).getBoundingClientRect();
       teamMemberPositions.push(new TeamMemberPosition(teamMember.id, element.x, element.y, 0));
     }
-    console.log(teamMemberPositions);
     this.sessionService.finishSession(this.session.sessionId, this.userName, teamMemberPositions);
+    this.backToSession();
+  }
+
+  public disableDragging(){
+    (<any>window).dragMoveListener = null;
   }
 
   public initDraggable() {

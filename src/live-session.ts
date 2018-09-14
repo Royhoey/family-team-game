@@ -19,4 +19,8 @@ export class LiveSession{
         });
       }
 
+    public viewUserSession(userName: string){
+      this.router.navigateToRoute('team-positions', { sessionId: this.session.sessionId, userName, readOnly: true });
+    }
+
 }

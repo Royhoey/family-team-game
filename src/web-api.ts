@@ -38,6 +38,7 @@ export class WebApi {
             .then((response) => this.handleFailedRequest(response))
             .then((response) => this.resolveResult<T>(response))
             .catch((error) => {
+                console.log(error);
                 return this.handleError(error);
             });
     }

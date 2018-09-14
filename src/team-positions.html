@@ -1,5 +1,7 @@
 <template>
   <require from="./team-positions.css"></require>
+  <button class="button button--start au-target" if.bind="!readOnly" click.delegate="finishSession()">Save</button>
+  <button class="button button--start au-target" if.bind="readOnly" click.delegate="backToSession()">Back to session</button>
   <div class="full-screen">
     <img class="couch" width="500" src="src/images/furniture/bank.svg" />
     <img class="plant2" width="200" src="src/images/furniture/Plant2.svg" />
@@ -14,6 +16,5 @@
       </div>
       <input type="range" id="teamMember-${teamMember.id}" value.bind="test" step="5">
     </template>
-    <button click.delegate="finishSession()">Finish session</button>
   </div>
 </template>

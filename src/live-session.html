@@ -2,5 +2,10 @@
     <div class="liveSession-container">
             <h1>SESSION LIVE</h1>
             <h2>Code: ${session.sessionId}</h2>
+
+            <h1>Users</h1>
+            <ul repeat.for="user of session.users">
+                <li click.delegate="viewUserSession(user)"><u>${user}</u></li>
+            </ul>
     </div>
 </template>

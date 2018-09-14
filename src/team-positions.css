@@ -56,3 +56,102 @@ input[type='range'] {
     bottom: 0;
     transform: rotate(180deg) scaleX(-1);
 }
+
+.teamCreation-container {
+    width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    padding: 50px;
+    top: 50px;
+    background-color: rgb(230, 230, 230, 0.5);
+}
+
+.teamname {
+    width: 350px;
+    height: 30px;
+    font-size: 25px;
+    padding: 5px;
+}
+
+.character-selection {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    display: inline-block;
+}
+
+.character {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.character.selected {
+    width: 150px;
+    height: 150px;
+}
+
+.character:hover {
+    height: 150px;
+    width: 150px;
+}
+
+.selectedteammember--image {
+    width: 100px;
+    height: 100px;
+    transform: rotate(90deg);
+}
+
+.selectedteammember--list {
+    list-style: none;
+    display: inline-block;
+}
+
+.selectedteammembers {
+    position: absolute;
+    bottom: 0;
+}
+
+.button {
+    width: 250px;
+    height: 50px;
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.button--add {
+    width: 350px;
+    background-color: #d35400;
+    color: #ffffff;
+}
+
+.button--add:disabled {
+    background-color: #e49866;
+    cursor: initial;
+    pointer-events: none;
+}
+
+.button--add:hover {
+    background-color: #a84300;
+}
+
+.button--start {
+    background-color: #3398db;
+    color: #ffffff;
+    margin: 0 auto;
+    display: block;
+}
+
+.button--start:hover {
+    background-color: #2879af;
+}
+
+.send-gif {
+    opacity: 0;
+    transition: opacity .5s;
+}
