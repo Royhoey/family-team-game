@@ -1,14 +1,14 @@
 
 
 import { autoinject } from 'aurelia-framework';
-import { AppRouter, RouterConfiguration } from 'aurelia-router';
+import { Router, RouterConfiguration } from 'aurelia-router';
 @autoinject
 export class App {
 
-
-  private configureRouter(config: RouterConfiguration, router: AppRouter) {
+  private configureRouter(config: RouterConfiguration, router: Router) {
     config.map([
-      { route: [''], name: 'home', moduleId: './team-positions' },
+      { route: ['', 'home'], name: 'home', moduleId: 'create-session' },
+      { route: 'team-positions', name: 'team-positions', moduleId: 'team-positions', nav: true}
     ]);
   }
 
