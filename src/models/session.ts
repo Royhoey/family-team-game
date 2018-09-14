@@ -11,7 +11,7 @@ export class Session {
   }
 
   public addTeamMember(name: string, image: string) {
-    this.teamMembers.push(new TeamMember(name, image));
+    this.teamMembers.push(new TeamMember(this.teamMembers.length + 1, name, image));
   }
 
 }

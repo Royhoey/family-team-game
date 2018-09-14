@@ -33,8 +33,8 @@ export class TeamPositions {
       });
   }
 
-  public focusInput(charId: number) {
-    var doc = document.getElementById('char-' + charId);
+  public focusInput(teamMemberId: number) {
+    var doc = document.getElementById('teamMember-' + teamMemberId);
     doc.focus();
   }
 
