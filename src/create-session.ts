@@ -2,6 +2,7 @@ import { Session } from './models/session';
 import { Data } from './data';
 import { Router } from 'aurelia-router';
 import { autoinject } from 'aurelia-framework';
+import { SessionService } from './services/sessionService';
 
 @autoinject
 export class CreateSession {
@@ -42,7 +43,8 @@ export class CreateSession {
     }
   ];
 
-  constructor(private data: Data, private router: Router) {
+  constructor(private data: Data, private router: Router, private sessionService: SessionService) {
+    
   }
 
   public setSelectedImage(imagePath: string) {
@@ -60,8 +62,9 @@ export class CreateSession {
   }
 
   public startSession() {
-    this.data.session = this.session;
-    this.router.navigateToRoute('team-positions');
+    this.sessionService.createSession(this.session.teamMembers).then((session) => {
+      this.router.navigateToRoute('live-session', {sessionId: session.sessionId});
+    });    
   }
 
   public toggleSendGif(show: boolean) {
