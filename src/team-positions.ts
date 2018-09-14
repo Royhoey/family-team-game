@@ -1,33 +1,18 @@
+import { Session } from './models/session';
 import { Data } from './data';
 import { autoinject } from 'aurelia-framework';
 
 @autoinject
 export class TeamPositions {
-  public chars = [
-    {
-      id: 1,
-      name: "Sander",
-      image: "person.svg"
-    },
-    {
-      id: 2,
-      name: "Roy",
-      image: "person.svg"
-    },
-    {
-      id: 3,
-      name: "Roy",
-      image: "person.svg"
-    },
-    {
-      id: 4,
-      name: "Roy",
-      image: "person.svg"
-    }
-  ];
+  
+  public session: Session;
+
   constructor(private data: Data) {
-    console.log(data);
-    console.log('hier');
+    this.session = this.data.session;
+    this.initDraggable();
+  }
+
+  public initDraggable(){
     // this is used later in the resizing and gesture demos
     (<any>window).dragMoveListener = this.dragMoveListener;
     interact('.draggable')

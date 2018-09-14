@@ -1,12 +1,12 @@
 <template>
   <require from="./team-positions.css"></require>
   <div class="full-screen">
-    <template repeat.for="char of chars">
-      <div class="draggable" click.delegate="focusInput(char.id)">
-        ${char.name}
-        <img src.bind="char.image" class="image" style="transform: rotate(${test*3.6+'deg'})" />
+    <template repeat.for="teamMember of session.teamMembers">
+      <div class="draggable" click.delegate="focusInput(teamMember.id)">
+        ${teamMember.name}
+        <img src.bind="teamMember.image" class="image" style="transform: rotate(${test*3.6+'deg'})" />
       </div>
-      <input type="range" id="char-${char.id}" value.bind="test" step="5">
+      <input type="range" id="teamMember-${teamMember.id}" value.bind="test" step="5">
     </template>
   </div>
 </template>
