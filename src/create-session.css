@@ -25,6 +25,7 @@
     position: absolute;
     height: 100px;
     width: 100px;
+    cursor: pointer;
 }
 
 .character.selected {
@@ -51,4 +52,48 @@
 .selectedteammembers {
     position: absolute;
     bottom: 0;
+}
+
+.button {
+    width: 250px;
+    height: 50px;
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.button--add {
+    width: 350px;
+    background-color: #d35400;
+    color: #ffffff;
+}
+
+.button--add:disabled {
+    background-color: #e49866;
+    cursor: initial;
+    pointer-events: none;
+}
+
+.button--add:hover {
+    background-color: #a84300;
+}
+
+.send {
+    position: absolute;
+    right: 250px;
+    top: 250px;
+}
+
+.button--start {
+    background-color: #3398db;
+    color: #ffffff;
+    margin: 0 auto;
+    display: block;
+}
+
+.button--start:hover {
+    background-color: #2879af;
 }
