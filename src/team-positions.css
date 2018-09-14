@@ -22,8 +22,8 @@ input[type='range'] {
 
 .teammember-name {
     position: absolute;
-    top: 8px;
-    font-size: 25px;
+    top: 1px;
+    font-size: 23px;
     color: #ffffff;
-    left: 14px;
+    left: 12px;
 }
