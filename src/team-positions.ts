@@ -34,7 +34,6 @@ export class TeamPositions {
       if (readOnly != null) {
         this.readOnly = readOnly;
       }
-      console.log(this.readOnly);
 
       if (!this.readOnly) {
         this.initDraggable();
@@ -55,7 +54,6 @@ export class TeamPositions {
       
       for (let teamMemberPosition of this.userSession.teamMemberPositions) {
         let element = document.getElementById("teamMember-" + teamMemberPosition.teamMemberId);
-        console.log(element);
         element.style.position = "absolute";
         element.style.top = teamMemberPosition.yCoordinate + "px";
         element.style.left = teamMemberPosition.xCoordinate + "px";
@@ -67,6 +65,7 @@ export class TeamPositions {
     let teamMemberPositions = [];
     for (let teamMember of this.session.teamMembers) {
       let element = document.querySelector("#teamMember-" + teamMember.id).getBoundingClientRect();
+      console.log(element);
       teamMemberPositions.push(new TeamMemberPosition(teamMember.id, element.x, element.y, 0));
     }
     this.sessionService.finishSession(this.session.sessionId, this.userName, teamMemberPositions);
@@ -99,7 +98,7 @@ export class TeamPositions {
   }
 
   public focusInput(teamMemberId: number) {
-    var doc = document.getElementById('teamMember-' + teamMemberId);
+    var doc = document.getElementById('teamMember-rotator-' + teamMemberId);
     doc.focus();
   }
 
